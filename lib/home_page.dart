@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_for_jithin/app_switch_button.dart';
 import 'package:image_picker/image_picker.dart';
 
 class HomePage extends StatefulWidget {
@@ -39,35 +40,19 @@ class _HomePageState extends State<HomePage> {
               getImage();
             }),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        appBar: AppBar(
-          title: Text(
-            "My Shots",
-            style: theme.textTheme.headline5,
-          ),
-          elevation: 0,
-          centerTitle: true,
-          backgroundColor: Colors.white,
-        ),
         body: Container(
           margin: EdgeInsets.symmetric(vertical: 20, horizontal: 25),
-          child: ListView.builder(
-            itemBuilder: (context, index) {
-              return Container(
-                margin: EdgeInsets.symmetric(vertical: 20),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(15.0),
-                  child: AspectRatio(
-                    aspectRatio: 1.5,
-                    child: Image.network(
-                      "https://homepages.cae.wisc.edu/~ece533/images/goldhill.png",
-                      fit: BoxFit.fill,
-                      width: size.width - 50,
-                    ),
-                  ),
-                ),
-              );
-            },
-            itemCount: 10,
+          child: Center(
+            child: CustomSwitch(
+              value: false,
+              activeText: "METRIC",
+              inactiveText: "NON-METRIC",
+              width: 200,
+              height: 52,
+              onChanged: (val) {
+                print("$val");
+              },
+            ),
           ),
         ),
       ),
